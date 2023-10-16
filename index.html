@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Bhaskara</title>
+</head>
+<body>
+    <h1>Calculadora de Bhaskara</h1>
+
+    <label for="a">a: </label>
+    <input type="number" id="a"><br><br>
+
+    <label for="b">b: </label>
+    <input type="number" id="b"><br><br>
+
+    <label for="c">c: </label>
+    <input type="number" id="c"><br><br>
+
+    <button onclick="calcularBhaskara()">Calcular</button><br><br>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularBhaskara() {
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+            const c = parseFloat(document.getElementById("c").value);
+
+            const delta = b * b - 4 * a * c;
+
+            if (delta < 0) {
+                document.getElementById("resultado").textContent = "A equação não possui raízes reais.";
+            } else if (delta === 0) {
+                const x = -b / (2 * a);
+                document.getElementById("resultado").textContent = "A equação possui uma raiz real: x = " + x;
+            } else {
+                const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                document.getElementById("resultado").textContent = "A equação possui duas raízes reais: x1 = " + x1 + " e x2 = " + x2;
+            }
+        }
+    </script>
+</body>
